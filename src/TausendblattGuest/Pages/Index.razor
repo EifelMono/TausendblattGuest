@@ -1,0 +1,34 @@
+﻿@page "/"
+
+@inject NavigationManager NavigationManager
+@inject IAppData AppData
+
+<Heading Size="HeadingSize.Is1" TextAlignment="TextAlignment.Center">
+    Herzlich willkommen im
+</Heading>
+
+
+<Div Flex="Flex.JustifyContent.Center" Margin="Margin.Is1">
+    <Image Source="@AppData.ImageLogoFerienhausTausendblatt" Margin="Margin.Is1" Width="Width.Is75"></Image>
+</Div>
+
+<Paragraph Margin="Margin.Is5.FromTop" TextAlignment="TextAlignment.Center">
+    Hier finden sie ein paar Tips für ihren Aufenthalt.
+</Paragraph>
+
+
+<Paragraph TextAlignment="TextAlignment.Center">
+    Sie können uns über folgende Medien erreichen
+</Paragraph>
+
+<ButtonContact Image="images/Icons/WhatsApp BW.svg" Caption="WathsApp" Action="https://wa.me/4915122341338" />
+<ButtonContact Image="images/Icons/Phone BW.svg" Caption="Anrufen" Action="tel:+4915122341338" />
+<ButtonContact Image="images/Icons/Email BW.svg" Caption="Email" Action="mailto:ferienhaus@klapperich.de" />
+<ButtonContact Image="images/Icons/Sms BW.svg" Caption="Sms" Action="sms:+4915122341338" />
+
+@code {
+    protected override void OnInitialized()
+    {
+        AppData.NavigationManager = NavigationManager;
+    }
+}

@@ -1,0 +1,37 @@
+﻿@inject IAppData AppData
+<Bar Breakpoint="Breakpoint.Desktop" NavigationBreakpoint="Breakpoint.Tablet" ThemeContrast="ThemeContrast.Dark"
+     Mode="BarMode.VerticalInline" CollapseMode="BarCollapseMode.Small">
+    <BarToggler />
+    <BarBrand>
+        <BarItem>
+            <BarLink To="">
+                <BarIcon IconName="customIcon" />
+                Tausendblatt
+            </BarLink>
+        </BarItem>
+    </BarBrand>
+    <BarMenu>
+        <BarStart>
+            <SideMenuItem Page=@AppData.Pages.Index />
+            <SideMenuItem Page=@AppData.Pages.Contact />
+            <SideMenuItem Page=@AppData.Pages.House />
+            <SideMenuItem Page=@AppData.Pages.Shopping />
+            <SideMenuItem Page=@AppData.Pages.Eat />
+            <SideMenuItem Page=@AppData.Pages.Vicinity />
+            <SideMenuItem Page=@AppData.Pages.Emergency />
+        </BarStart>
+        <BarEnd>
+            <BarItem>
+                <BarLink To="/about">
+                    <BarIcon IconName="IconName.InfoCircle" />
+                    Über...
+                </BarLink>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
+@code {
+    private bool pagesBarVisible = true;
+
+    RenderFragment customIcon =@<img src="/favicon.svg" style="width:32px; height: 32px" />;
+}

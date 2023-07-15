@@ -1,0 +1,13 @@
+﻿<BarItem>
+    <BarLink To=@Page!.Route>
+        <BarIcon IconName=@Page.IconName />
+        @Page.Title
+    </BarLink>
+</BarItem>
+
+
+@code {
+    [Parameter]
+    public Page? Page { get; set; }
+
+}

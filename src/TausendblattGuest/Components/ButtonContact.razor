@@ -1,0 +1,23 @@
+﻿@inject NavigationManager NavigationManager
+<Button Clicked="@ButtonClick" Margin="Margin.Is1" Width="Width.Is100" Color="Color.Primary">
+        <Image Source="@Image" Style="@ButtonStyle"></Image>
+        @Caption
+</Button>
+@code {
+    [Parameter]
+    public string? Caption { get; set; }
+
+    [Parameter]
+    public string? Image { get; set; }
+    [Parameter]
+    public string? Action { get; set; }
+
+
+    string ButtonStyle => "width:32px";
+
+    void ButtonClick()
+    {
+        NavigationManager.NavigateTo(Action!);
+    }
+
+}
