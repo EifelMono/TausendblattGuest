@@ -1,10 +1,22 @@
-﻿<Blazorise.ThemeProvider Theme="@theme">
+﻿@inject IAppDataSingleton AppDataSingleton;
+@inject IAppDataTransient AppDataTransient;
+@inject IAppDataScoped AppDataScoped;
+@inject NavigationManager NavigationManager;
+
+@using Microsoft.AspNetCore.WebUtilities
+
+<Blazorise.ThemeProvider Theme="@theme">
     <Router AppAssembly="typeof(App).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="routeData" DefaultLayout="typeof(TausendblattGuest.Layouts.MainLayout)" />
         </Found>
         <NotFound>
-            <p>Sorry, there's nothing at this address.</p>
+            <Paragraph Margin="Margin.Is5" TextAlignment="TextAlignment.Center">
+                <Paragraph Margin="Margin.Is1">
+                    Enschuldigung, hier gibt es noch nichts zu sehen.
+                </Paragraph>
+                <Button Color="Color.Primary" Margin="Margin.Is1" Clicked="@ButtonGoToMainPage">Mit zurück kommen sie wieder in die App.</Button>
+            </Paragraph>
         </NotFound>
     </Router>
     <MessageProvider />
@@ -44,4 +56,23 @@
                 CheckColor = "#5EA8F4",
             }
         };
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        AppDataSingleton.NavigationManager = NavigationManager;
+
+        var uri = AppDataSingleton.NavigationManager.ToAbsoluteUri(AppDataSingleton.NavigationManager.Uri);
+
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("house", out var house))
+        {
+            AppDataSingleton.HouseNumber = Convert.ToInt32(house);
+            AppDataTransient.HouseNumber = Convert.ToInt32(house);
+            AppDataScoped.HouseNumber = Convert.ToInt32(house);
+        }
+    }
+
+    void ButtonGoToMainPage()
+        => AppDataSingleton.NavigationManager.NavigateTo("/");
 }

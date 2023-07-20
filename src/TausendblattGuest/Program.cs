@@ -1,11 +1,10 @@
-// s3zktiq0czlhyeng.myfritz.net
-// https://freeicons.io/
 
-// https://www.iconfinder.com
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IAppData, AppData>();
+builder.Services.AddSingleton<IAppDataSingleton, AppDataSingleton>();
+builder.Services.AddTransient<IAppDataTransient, AppDataTransient>();
+builder.Services.AddScoped<IAppDataScoped, AppDataScoped>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
@@ -32,10 +31,8 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 
-// app.Urls.Add($"https://*:{61005}");
-app.Urls.Add($"http://*:{61006}");
-// app.Urls.Add($"https://*:{61007}");
-app.Urls.Add($"http://*:{61008}");
+// app.Urls.Add($"https://*:{56744}");
+app.Urls.Add($"http://*:{56745}");
 
 
 AddAppData(app);
@@ -58,7 +55,7 @@ void AddAppData(IHost host)
     var serviceProvider = serviceScope.ServiceProvider;
     try
     {
-        var appData = serviceProvider.GetRequiredService<IAppData>();
+        var appData = serviceProvider.GetRequiredService<IAppDataSingleton>();
         appData.Host = host;
     }
     catch { }

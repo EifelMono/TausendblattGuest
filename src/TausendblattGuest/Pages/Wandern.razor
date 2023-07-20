@@ -1,4 +1,4 @@
-﻿@page "/vicinity"
+﻿@page "/wandern"
 @inject IAppDataSingleton AppData
 
 <Heading Size="HeadingSize.Is3">
@@ -16,7 +16,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Page = AppData.Pages.Vicinity;
+        Page = AppData.Pages.Wandern;
         Route = Page.Route;
     }
 }

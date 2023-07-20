@@ -1,34 +1,53 @@
 ﻿@page "/"
 
-@inject NavigationManager NavigationManager
-@inject IAppData AppData
+@inject IAppDataSingleton AppDataSingleton;
+@inject IAppDataTransient AppDataTransient;
+@inject IAppDataScoped AppDataScoped;
+
 
 <Heading Size="HeadingSize.Is1" TextAlignment="TextAlignment.Center">
-    Herzlich willkommen im
+    und Herzlich Willkommen im
 </Heading>
 
-
 <Div Flex="Flex.JustifyContent.Center" Margin="Margin.Is1">
-    <Image Source="@AppData.ImageLogoFerienhausTausendblatt" Margin="Margin.Is1" Width="Width.Is75"></Image>
+    <Image Source="@AppDataSingleton.ImageLogoFerienhausTausendblatt()" Margin="Margin.Is1" Width="Width.Is75"></Image>
 </Div>
 
 <Paragraph Margin="Margin.Is5.FromTop" TextAlignment="TextAlignment.Center">
-    Hier finden sie ein paar Tips für ihren Aufenthalt.
+    In dieser 'App' finden sie ein paar Tips für ihren Aufenthalt.
 </Paragraph>
-
 
 <Paragraph TextAlignment="TextAlignment.Center">
-    Sie können uns über folgende Medien erreichen
+    Wir wünschen Ihnen ganz viel Spaß
 </Paragraph>
 
-<ButtonContact Image="images/Icons/WhatsApp BW.svg" Caption="WathsApp" Action="https://wa.me/4915122341338" />
-<ButtonContact Image="images/Icons/Phone BW.svg" Caption="Anrufen" Action="tel:+4915122341338" />
-<ButtonContact Image="images/Icons/Email BW.svg" Caption="Email" Action="mailto:ferienhaus@klapperich.de" />
-<ButtonContact Image="images/Icons/Sms BW.svg" Caption="Sms" Action="sms:+4915122341338" />
+<Paragraph TextAlignment="TextAlignment.Center">
+    Beim Wandern, Biken, Swimmen, Releaxen am Waldsee Rieden
+</Paragraph>
+
+
+<Paragraph Margin="Margin.Is5.FromTop"  TextAlignment="TextAlignment.Center">
+    Sie können uns jederzeit über folgende Medien erreichen
+</Paragraph>
+
+<ButtonContact Image="images/Icons/WhatsApp.bw.svg" Caption="WathsApp" Action="https://wa.me/4915122341338" />
+<ButtonContact Image="images/Icons/Phone.bw.svg" Caption="Anruf" Action="tel:+4915122341338" />
+<ButtonContact Image="images/Icons/Email.bw.svg" Caption="Email" Action="mailto:ferienhaus@klapperich.de?subject=Frage%20Kontakt" />
+<ButtonContact Image="images/Icons/Sms.bw.svg" Caption="Sms" Action="sms:+4915122341338" />
+
+
+<Paragraph Margin="Margin.Is5" TextAlignment="TextAlignment.Center" TextWeight="TextWeight.Bold">
+    Diese App befindet sich noch im Aufbau
+</Paragraph>
+
+<Div Flex="Flex.JustifyContent.Center" Margin="Margin.Is5">
+    <Image Source="images/Under Construction.jpg" Margin="Margin.Is1" Width="Width.Is100"></Image>
+</Div>
+
+
 
 @code {
     protected override void OnInitialized()
     {
-        AppData.NavigationManager = NavigationManager;
     }
 }

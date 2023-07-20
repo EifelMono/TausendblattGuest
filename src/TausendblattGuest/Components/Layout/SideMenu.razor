@@ -1,4 +1,4 @@
-﻿@inject IAppData AppData
+﻿@inject IAppDataSingleton AppData
 <Bar Breakpoint="Breakpoint.Desktop" NavigationBreakpoint="Breakpoint.Tablet" ThemeContrast="ThemeContrast.Dark"
      Mode="BarMode.VerticalInline" CollapseMode="BarCollapseMode.Small">
     <BarToggler />
@@ -12,22 +12,37 @@
     </BarBrand>
     <BarMenu>
         <BarStart>
-            <SideMenuItem Page=@AppData.Pages.Index />
-            <SideMenuItem Page=@AppData.Pages.Contact />
-            <SideMenuItem Page=@AppData.Pages.House />
-            <SideMenuItem Page=@AppData.Pages.Shopping />
-            <SideMenuItem Page=@AppData.Pages.Eat />
-            <SideMenuItem Page=@AppData.Pages.Vicinity />
-            <SideMenuItem Page=@AppData.Pages.Emergency />
+            <BarItemWithBarLink Page=@AppData.Pages.Index />
+         @*    <BarItemWithBarLink Page=@AppData.Pages.Contact /> *@
+            <BarItemWithBarLink Page=@AppData.Pages.House />
+            <BarItemWithBarLink Page=@AppData.Pages.Shopping />
+            <BarItemWithBarLink Page=@AppData.Pages.Eat />
+            <BarItemWithBarLink Page=@AppData.Pages.Vicinity />
+            <BarItemWithBarLink Page=@AppData.Pages.Emergency />
         </BarStart>
         <BarEnd>
+            <BarItem>
+                <BarDropdown>
+                    <BarDropdownToggle>
+                        <BarIcon IconName="IconName.Smartphone" />
+                        Apps
+                    </BarDropdownToggle>
+                    <BarDropdownMenu>
+                        <BarDropdownItem To="/apps/todo">
+                            Todo
+                        </BarDropdownItem>
+                    </BarDropdownMenu>
+                </BarDropdown>
+            </BarItem>
+        </BarEnd>
+      @*   <BarEnd>
             <BarItem>
                 <BarLink To="/about">
                     <BarIcon IconName="IconName.InfoCircle" />
                     Über...
                 </BarLink>
             </BarItem>
-        </BarEnd>
+        </BarEnd> *@
     </BarMenu>
 </Bar>
 @code {
