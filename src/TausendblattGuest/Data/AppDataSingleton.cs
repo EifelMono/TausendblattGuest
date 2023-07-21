@@ -57,7 +57,7 @@ public class AppDataSingleton : IAppDataSingleton
             try
             {
                 _userAgent = value;
-                LogFile ??= DirectoryPath.OS.Data.Clone().Append("eifelmono", "Tausendblatt", "Guest").CloneToFilePath("UserAgents.Txt").EnsureDirectoryExist();
+                LogFile ??= DirectoryPath.OS.SpezialDirectory.LocalApplicationData.Clone().Append("eifelmono", "Tausendblatt", "Guest").CloneToFilePath("UserAgents.Txt").EnsureDirectoryExist();
                 Logger!.LogInformation(LogFile);
                 LogFile.AppendAllText($"{_userAgent}\r\n");
             }
