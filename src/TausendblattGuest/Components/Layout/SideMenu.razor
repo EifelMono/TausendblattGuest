@@ -19,6 +19,7 @@
             <BarItemWithBarLink Page=@AppData.Pages.Eat />
             <BarItemWithBarLink Page=@AppData.Pages.Vicinity />
             <BarItemWithBarLink Page=@AppData.Pages.Emergency />
+            <BarItemWithBarLink Page=@AppData.Pages.QrCodes/>
         </BarStart>
         <BarEnd>
             <BarItem>
@@ -49,4 +50,6 @@
     private bool pagesBarVisible = true;
 
     RenderFragment customIcon =@<img src="/favicon.svg" style="width:32px; height: 32px" />;
+
+
 }

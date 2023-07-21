@@ -1,7 +1,9 @@
-﻿@inject IAppDataSingleton AppDataSingleton;
-@inject IAppDataTransient AppDataTransient;
-@inject IAppDataScoped AppDataScoped;
-@inject NavigationManager NavigationManager;
+﻿@inject IAppDataSingleton AppDataSingleton
+@inject IAppDataTransient AppDataTransient
+@inject IAppDataScoped AppDataScoped
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject ILogger<App> Logger
 
 @using Microsoft.AspNetCore.WebUtilities
 
@@ -57,22 +59,18 @@
             }
         };
 
-    protected override void OnInitialized()
+    protected async override Task OnAfterRenderAsync(bool firstRender)
     {
-        base.OnInitialized();
-
         AppDataSingleton.NavigationManager = NavigationManager;
 
         var uri = AppDataSingleton.NavigationManager.ToAbsoluteUri(AppDataSingleton.NavigationManager.Uri);
 
-        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("house", out var house))
-        {
-            AppDataSingleton.HouseNumber = Convert.ToInt32(house);
-            AppDataTransient.HouseNumber = Convert.ToInt32(house);
-            AppDataScoped.HouseNumber = Convert.ToInt32(house);
-        }
+        AppDataSingleton.Logger = Logger;
+        AppDataSingleton.UserAgent = await JSRuntime.InvokeAsync<string>("window.deviceInfo.getUserAgent");
     }
 
     void ButtonGoToMainPage()
-        => AppDataSingleton.NavigationManager.NavigateTo("/");
+        => AppDataSingleton!.NavigationManager!.NavigateTo("/");
+
+    public static RenderFragment QrIcon =@<img src="/images/Icons/hello.qr.svg" style="width:16px; height: 16px" />;
 }

@@ -1,4 +1,6 @@
-﻿namespace TausendblattGuest.Data;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace TausendblattGuest.Data;
 
 public class Pages
 {
@@ -106,5 +108,12 @@ public class Pages
         Route = "/wandern",
         Title = "Wandern",
         IconName = IconName.QuestionCircle
+    };
+
+    public Page QrCodes { get; init; } = new Page
+    {
+        Route = "/qrcodes",
+        Title = "QrCodes",
+        IconName = App.QrIcon
     };
 }

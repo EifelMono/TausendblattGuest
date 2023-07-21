@@ -1,0 +1,57 @@
+﻿@page "/qrcodes"
+@inject IAppDataSingleton AppData
+
+<Heading Size="HeadingSize.Is3">
+    <BarIcon IconName=@Page!.IconName />
+    @Page.Title
+</Heading>
+
+
+@* <Table>
+    <TableHeader>
+        <TableRow>
+            <TableHeaderCell>#</TableHeaderCell>
+            <TableHeaderCell>First Name</TableHeaderCell>
+            <TableHeaderCell>Last Name</TableHeaderCell>
+            <TableHeaderCell>Username</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableRowHeader>1</TableRowHeader>
+            <TableRowCell>Mark</TableRowCell>
+            <TableRowCell>Otto</TableRowCell>
+            <TableRowCell>@@mdo</TableRowCell>
+        </TableRow>
+        <TableRow>
+            <TableRowHeader>2</TableRowHeader>
+            <TableRowCell>Jacob</TableRowCell>
+            <TableRowCell>Thornton</TableRowCell>
+            <TableRowCell>@@fat</TableRowCell>
+        </TableRow>
+        <TableRow>
+            <TableRowHeader>3</TableRowHeader>
+            <TableRowCell>Larry</TableRowCell>
+            <TableRowCell>the Bird</TableRowCell>
+            <TableRowCell>@@twitter</TableRowCell>
+        </TableRow>
+    </TableBody>
+</Table> *@
+
+<UnderConstruction></UnderConstruction>
+
+@code {
+
+    [Parameter]
+    public string? Route { get; set; }
+
+    [Parameter]
+    public Page? Page { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Page = AppData.Pages.QrCodes;
+        Route = Page.Route;
+    }
+}

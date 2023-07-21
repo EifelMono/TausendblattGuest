@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using EifelMono.Fluent.IO;
+using Microsoft.AspNetCore.Components;
 
 namespace TausendblattGuest.Data;
 
@@ -12,7 +13,12 @@ public interface IAppDataSingleton
     NavigationManager? NavigationManager { get; set; }
 
     Pages Pages { get; }
+
+    string? UserAgent { get; set; }
+
+    ILogger<App>? Logger { get; set; }
 }
+
 public class AppDataSingleton : IAppDataSingleton
 {
     public IHost? Host { get; set; }
@@ -39,4 +45,23 @@ public class AppDataSingleton : IAppDataSingleton
 
 
     public Pages Pages => new();
+
+    private string? _userAgent;
+    public string? UserAgent
+    {
+        get => _userAgent;
+        set
+        {
+            try
+            {
+                _userAgent = value;
+                var file = DirectoryPath.OS.Data.Clone().Append("eifelmono", "Tausendblatt", "Guest").CloneToFilePath("UserAgents.Txt").EnsureDirectoryExist();
+                Logger.LogInformation(file);
+                file.AppendAllText($"{_userAgent}\r\n");
+            }
+            catch { }
+        }
+    }
+
+    public ILogger<App>? Logger { get; set; }
 }
