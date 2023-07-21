@@ -8,7 +8,25 @@
     @Page.Title
 </Heading>
 
-<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+<Carousel @bind-SelectedSlide="@selectedSlide" Margin="Margin.Is3.FromTop" ShowIndicators ShowControls>
+    <CarouselSlide Name="1">
+        <Image Source="images/Slider/Wandern.jpg" Text="Wandern" Display="Display.Block" Width="Width.Is100" />
+    </CarouselSlide>
+    <CarouselSlide Name="2">
+        <Image Source="images/Slider/Biken.jpg" Text="Biken" Display="Display.Block" Width="Width.Is100" />
+    </CarouselSlide>
+    <CarouselSlide Name="3">
+        <Image Source="images/Slider/Schwimmen.jpg" Text="Schwimmen" Display="Display.Block" Width="Width.Is100" />
+    </CarouselSlide>
+    <CarouselSlide Name="4">
+        <Image Source="images/Slider/Relaxen.jpg" Text="Relaxen" Display="Display.Block" Width="Width.Is100" />
+    </CarouselSlide>
+    <CarouselSlide Name="5">
+        <Image Source="images/Slider/Tausendblatt.jpg" Text="Tausendblatt" Display="Display.Block" Width="Width.Is100" />
+    </CarouselSlide>
+</Carousel>
+
+<Tabs Margin="Margin.Is3.FromTop" SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
     <Items>
         <Tab Name="house">Allgemein</Tab>
         <Tab Name="house5">5</Tab>
@@ -17,32 +35,18 @@
     <Content>
         <TabPanel Name="house">
             <Image Margin="Margin.Is4" Source="@AppDataSingleton.ImageLogoHouse()" Width="Width.Is25"></Image>
-            <Carousel @bind-SelectedSlide="@selectedSlide" Margin="Margin.Is3" ShowIndicators ShowControls>
-                <CarouselSlide Name="1">
-                    <Image Source="images/Slider/Wandern.jpg" Text="Wandern" Display="Display.Block" Width="Width.Is100" />
-                </CarouselSlide>
-                <CarouselSlide Name="2">
-                    <Image Source="images/Slider/Biken.jpg" Text="Biken" Display="Display.Block" Width="Width.Is100" />
-                </CarouselSlide>
-                <CarouselSlide Name="3">
-                    <Image Source="images/Slider/Schwimmen.jpg" Text="Schwimmen" Display="Display.Block" Width="Width.Is100" />
-                </CarouselSlide>
-                <CarouselSlide Name="4">
-                    <Image Source="images/Slider/Relaxen.jpg" Text="Relaxen" Display="Display.Block" Width="Width.Is100" />
-                </CarouselSlide>
-                <CarouselSlide Name="5">
-                    <Image Source="images/Slider/Tausendblatt.jpg" Text="Tausendblatt" Display="Display.Block" Width="Width.Is100" />
-                </CarouselSlide>
-            </Carousel>
+
         </TabPanel>
         <TabPanel Name="house5">
             <Image Margin="Margin.Is4" Source="@AppDataSingleton.ImageLogoHouse(5)" Width="Width.Is25"></Image>
         </TabPanel>
         <TabPanel Name="house7">
-            <Image Margin="Margin.Is4"  Source="@AppDataSingleton.ImageLogoHouse(7)" Width="Width.Is25"></Image>
+            <Image Margin="Margin.Is4" Source="@AppDataSingleton.ImageLogoHouse(7)" Width="Width.Is25"></Image>
         </TabPanel>
     </Content>
 </Tabs>
+
+<UnderConstruction></UnderConstruction>
 
 
 @code {

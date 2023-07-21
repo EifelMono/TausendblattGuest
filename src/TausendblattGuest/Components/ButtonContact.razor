@@ -1,5 +1,5 @@
 ﻿@inject NavigationManager NavigationManager
-<Button Clicked="@ButtonClick" Margin="Margin.Is1" Width="Width.Is100" Color="Color.Primary">
+<Button Clicked="@ButtonClick" Margin="@Margin" Width="Width.Is100" Color="Color.Primary">
         <Image Source="@Image" Style="@ButtonStyle"></Image>
         @Caption
 </Button>
@@ -11,6 +11,9 @@
     public string? Image { get; set; }
     [Parameter]
     public string? Action { get; set; }
+
+    [Parameter]
+    public IFluentSpacing Margin { get; set; } = Blazorise.Margin.Is1;
 
 
     string ButtonStyle => "width:32px";
