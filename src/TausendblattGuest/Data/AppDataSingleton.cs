@@ -16,6 +16,8 @@ public interface IAppDataSingleton
 
     string? UserAgent { get; set; }
 
+    FilePath? LogFile { get; set; }
+
     ILogger<App>? Logger { get; set; }
 }
 
@@ -55,13 +57,15 @@ public class AppDataSingleton : IAppDataSingleton
             try
             {
                 _userAgent = value;
-                var file = DirectoryPath.OS.Data.Clone().Append("eifelmono", "Tausendblatt", "Guest").CloneToFilePath("UserAgents.Txt").EnsureDirectoryExist();
-                Logger.LogInformation(file);
-                file.AppendAllText($"{_userAgent}\r\n");
+                LogFile ??= DirectoryPath.OS.Data.Clone().Append("eifelmono", "Tausendblatt", "Guest").CloneToFilePath("UserAgents.Txt").EnsureDirectoryExist();
+                Logger!.LogInformation(LogFile);
+                LogFile.AppendAllText($"{_userAgent}\r\n");
             }
             catch { }
         }
     }
 
+
+    public FilePath? LogFile { get; set; }
     public ILogger<App>? Logger { get; set; }
 }
