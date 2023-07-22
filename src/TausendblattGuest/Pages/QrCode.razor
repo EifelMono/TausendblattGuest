@@ -1,14 +1,12 @@
-﻿@page "/tausendblatt"
+﻿@page "/qrcode"
 @inject IAppDataSingleton AppData
 
-<Heading Size="HeadingSize.Is3">
-    <BarIcon IconName=@Page!.IconName />
-    @Page.Title
-</Heading>
+<PageHeader Page="@Page" />
 
 <UnderConstruction></UnderConstruction>
 
 @code {
+
     [Parameter]
     public string? Route { get; set; }
 
@@ -18,7 +16,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Page = AppData.Pages.Tausendblatt;
+        Page = AppData.Pages.QrCode;
         Route = Page.Route;
     }
 }

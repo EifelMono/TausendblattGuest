@@ -1,10 +1,7 @@
-﻿@page "/traumpfade"
+﻿@page "/qr/waldsee"
 @inject IAppDataSingleton AppData
 
-<Heading Size="HeadingSize.Is3">
-    <BarIcon IconName=@Page!.IconName />
-    @Page.Title
-</Heading>
+<PageHeader Page="@Page" />
 
 <UnderConstruction></UnderConstruction>
 
@@ -18,7 +15,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Page = AppData.Pages.Traumpfade;
+        Page = AppData.Pages.QrWaldsee;
         Route = Page.Route;
     }
 }

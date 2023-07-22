@@ -1,0 +1,12 @@
+﻿<Heading Margin="@Margin" Size="HeadingSize.Is3">
+    <BarIcon IconName=@Page!.IconName />
+    @Page.Title
+</Heading>
+
+@code {
+    [Parameter]
+    public Page? Page { get; set; }
+
+    [Parameter]
+    public IFluentSpacing Margin { get; set; } = Blazorise.Margin.Is1;
+}

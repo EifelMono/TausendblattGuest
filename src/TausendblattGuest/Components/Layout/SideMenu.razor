@@ -12,38 +12,18 @@
     </BarBrand>
     <BarMenu>
         <BarStart>
-            <BarItemWithBarLink Page=@AppData.Pages.Index />
-         @*    <BarItemWithBarLink Page=@AppData.Pages.Contact /> *@
-            <BarItemWithBarLink Page=@AppData.Pages.House />
-            <BarItemWithBarLink Page=@AppData.Pages.Shopping />
-            <BarItemWithBarLink Page=@AppData.Pages.Eat />
-            <BarItemWithBarLink Page=@AppData.Pages.Vicinity />
-            <BarItemWithBarLink Page=@AppData.Pages.Emergency />
-            <BarItemWithBarLink Page=@AppData.Pages.QrCodes/>
+            <BarItemPage Page=@AppData.Pages.Index />
+            <BarItemPage Page=@AppData.Pages.House />
+            <BarItemPage Page=@AppData.Pages.Shopping />
+            <BarItemPage Page=@AppData.Pages.Eat />
+            <BarItemPage Page=@AppData.Pages.Vicinity />
+            <BarItemPage Page=@AppData.Pages.Emergency />
+
+            <BarItemPageWithSubpages Page="@AppData.Pages.QrCode" SubPages="@AppData.Pages.QrCodesSubPages" />
         </BarStart>
         <BarEnd>
-            <BarItem>
-                <BarDropdown>
-                    <BarDropdownToggle>
-                        <BarIcon IconName="IconName.Smartphone" />
-                        Apps
-                    </BarDropdownToggle>
-                    <BarDropdownMenu>
-                        <BarDropdownItem To="/apps/todo">
-                            Todo
-                        </BarDropdownItem>
-                    </BarDropdownMenu>
-                </BarDropdown>
-            </BarItem>
+            <BarItemPageWithSubpages Page="@AppData.Pages.WebApp" SubPages="@AppData.Pages.WebAppSubPages" />
         </BarEnd>
-      @*   <BarEnd>
-            <BarItem>
-                <BarLink To="/about">
-                    <BarIcon IconName="IconName.InfoCircle" />
-                    Über...
-                </BarLink>
-            </BarItem>
-        </BarEnd> *@
     </BarMenu>
 </Bar>
 @code {

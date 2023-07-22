@@ -3,10 +3,7 @@
 @inject IAppDataTransient AppDataTransient;
 @inject IAppDataScoped AppDataScoped;
 
-<Heading Size="HeadingSize.Is3">
-    <BarIcon IconName=@Page!.IconName />
-    @Page.Title
-</Heading>
+<PageHeader Page="@Page" />
 
 <Carousel @bind-SelectedSlide="@selectedSlide" Margin="Margin.Is3.FromTop" ShowIndicators ShowControls>
     <CarouselSlide Name="1">

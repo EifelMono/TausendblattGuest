@@ -17,20 +17,7 @@ public class Pages
         Title = "Info über Tausendblatt",
         IconName = IconName.InfoCircle
     };
-    public Page AboutApp { get; init; } = new Page
-    {
-        Route = "/info/app",
-        Title = "Info über WebApp",
-        IconName = IconName.InfoCircle
-    };
-
-
-    public Page Contact { get; init; } = new Page
-    {
-        Route = "/contact",
-        Title = "Kontakt",
-        IconName = IconName.UserFriends
-    };
+ 
 
     public Page Eat { get; init; } = new Page
     {
@@ -75,45 +62,75 @@ public class Pages
         IconName = IconName.ShoppingBag
     };
 
-    public Page Tausendblatt { get; init; } = new Page
+    public Page QrCode { get; init; } = new Page
     {
-        Route = "/tausenblatt",
+        Route = "/qrcode",
+        Title = "QrCode",
+        IconName = IconName.BorderAll
+    };
+
+
+    public Page QrTausendblatt { get; init; } = new Page
+    {
+        Route = "/qr/tausendblatt",
         Title = "Tausendblatt",
-        IconName = IconName.QuestionCircle
+        IconName = IconName.BorderAll
     };
 
-    public Page Traumpfade { get; init; } = new Page
+    public Page QrTraumpfade { get; init; } = new Page
     {
-        Route = "/traumpfade",
+        Route = "/qr/traumpfade",
         Title = "Traumpfade",
-        IconName = IconName.QuestionCircle
+        IconName = IconName.BorderAll
     };
 
-    public Page Udelsheck { get; init; } = new Page
+    public Page QrUdelsheck { get; init; } = new Page
     {
-        Route = "/udelsheck",
+        Route = "/qr/udelsheck",
         Title = "Udelsheck",
-        IconName = IconName.QuestionCircle
+        IconName = IconName.BorderAll
     };
 
-    public Page Waldsee { get; init; } = new Page
+    public Page QrWaldsee { get; init; } = new Page
     {
-        Route = "/waldsee",
+        Route = "/qr/waldsee",
         Title = "Waldsee",
-        IconName = IconName.QuestionCircle
+        IconName = IconName.BorderAll
     };
 
-    public Page Wandern { get; init; } = new Page
+    public Page QrWandern { get; init; } = new Page
     {
-        Route = "/wandern",
+        Route = "/qr/wandern",
         Title = "Wandern",
-        IconName = IconName.QuestionCircle
+        IconName = IconName.BorderAll
     };
 
-    public Page QrCodes { get; init; } = new Page
+    public Page[] QrCodesSubPages => new[]
     {
-        Route = "/qrcodes",
-        Title = "QrCodes",
-        IconName = App.QrIcon
+        QrTraumpfade,
+        QrTausendblatt,
+        QrWaldsee,
+        QrUdelsheck,
+        QrWandern,
+    };
+
+    public Page WebApp { get; init; } = new Page
+    {
+        Route = "/webapp",
+        Title = "WebApp",
+        IconName = IconName.InfoCircle
+    };
+
+
+    public Page WebAppContact { get; init; } = new Page
+    {
+        Route = "/webapp/contact",
+        Title = "Kontakt",
+        IconName = IconName.UserFriends
+    };
+
+    public Page[] WebAppSubPages => new[]
+ {
+        WebAppContact,
     };
 }

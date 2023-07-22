@@ -1,10 +1,7 @@
 ﻿@page "/vicinity"
 @inject IAppDataSingleton AppData
 
-<Heading Size="HeadingSize.Is3">
-    <BarIcon IconName=@Page!.IconName />
-    @Page.Title
-</Heading>
+<PageHeader Page="@Page" />
 
 <UnderConstruction></UnderConstruction>
 

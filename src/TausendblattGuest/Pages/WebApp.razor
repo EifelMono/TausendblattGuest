@@ -1,12 +1,11 @@
-﻿@page "/udelsheck"
+﻿@page "/webapp"
 @inject IAppDataSingleton AppData
 
-<Heading Size="HeadingSize.Is3">
-    <BarIcon IconName=@Page!.IconName />
-    @Page.Title
-</Heading>
+<PageHeader Page="@Page" />
 
 <UnderConstruction></UnderConstruction>
+
+@AppData.LogFile
 
 @code {
     [Parameter]
@@ -18,7 +17,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Page = AppData.Pages.Udelsheck;
+        Page = AppData.Pages.WebApp;
         Route = Page.Route;
     }
 }

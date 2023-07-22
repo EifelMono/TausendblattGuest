@@ -1,0 +1,27 @@
+﻿<BarItem>
+    <BarDropdown>
+        <BarDropdownToggle>
+            <BarIcon IconName="@Page.IconName" />
+            @Page.Title
+        </BarDropdownToggle>
+        @if (SubPages is { })
+        {
+            <BarDropdownMenu>
+                @foreach (var subPage in SubPages)
+                {
+                    <BarDropdownItem To="@subPage.Route" >
+                        @subPage.Title
+                    </BarDropdownItem>
+                }
+            </BarDropdownMenu>
+        }
+    </BarDropdown>
+</BarItem>
+
+
+@code {
+    [Parameter]
+    public Page? Page { get; set; }
+    [Parameter]
+    public Page[]? SubPages { get; set; }
+}
