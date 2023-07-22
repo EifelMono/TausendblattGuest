@@ -129,8 +129,16 @@ public class Pages
         IconName = IconName.UserFriends
     };
 
+    public Page WebAppCode{ get; init; } = new Page
+    {
+        Route = "/webapp/code",
+        Title = "Code",
+        IconName = IconName.Code
+    };
+
     public Page[] WebAppSubPages => new[]
  {
         WebAppContact,
+        WebAppCode,
     };
 }
