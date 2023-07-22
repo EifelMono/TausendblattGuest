@@ -1,12 +1,18 @@
-﻿<Heading Margin="@Margin" Size="HeadingSize.Is3">
-    <BarIcon IconName=@Page!.IconName />
-    @Page.Title
+﻿<Div Flex="Flex.JustifyContent.Center" Margin="@SelfMargin" Background="Background.Success" Clearfix="true">
+    <Div Margin="Margin.Is2">
+        <BarIcon IconName=@Page!.IconName />
+        @Page.Title
+    </Div>
+</Div>
+@* <Heading Margin="@Margin" Size="HeadingSize.Is3">
 </Heading>
+ *@
+
 
 @code {
     [Parameter]
     public Page? Page { get; set; }
 
     [Parameter]
-    public IFluentSpacing Margin { get; set; } = Blazorise.Margin.Is1;
+    public IFluentSpacing SelfMargin { get; set; } = Blazorise.Margin.Is0.FromTop.Is3.FromBottom;
 }
