@@ -1,8 +1,7 @@
-# TausendblattGuest
-// s3zktiq0czlhyeng.myfritz.net:56745 
+# Trausendblatt Guest
 
-## Icons from
+WebApp for out guest in the vacation house [Ferienhaus Tausendblatt](https://ferienhaus-tausendblatt.de).
 
-// https://freeicons.io/
+Written in c# and blazor server.
 
-// https://www.iconfinder.com
+
