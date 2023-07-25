@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "TausendblattOcoppied": {
+    "TausendblattGuest": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
