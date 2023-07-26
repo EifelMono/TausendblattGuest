@@ -5,7 +5,7 @@
     <BarBrand>
         <BarItem>
             <BarLink To="">
-                <BarIcon IconName="customIcon" />
+                <BarIcon IconName="@App.FavIcon(IconSize.Large)" />
                 Tausendblatt
             </BarLink>
         </BarItem>
@@ -27,9 +27,4 @@
     </BarMenu>
 </Bar>
 @code {
-    private bool pagesBarVisible = true;
-
-    RenderFragment customIcon =@<img src="/favicon.svg" style="width:32px; height: 32px" />;
-
-
 }

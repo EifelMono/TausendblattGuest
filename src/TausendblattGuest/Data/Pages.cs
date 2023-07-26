@@ -113,6 +113,12 @@ public class Pages
         QrUdelsheck,
         QrWandern,
     };
+    public Page Play { get; init; } = new Page
+    {
+        Route = "/play",
+        Title = "Play",
+        IconName = IconName.Play
+    };
 
     public Page WebApp { get; init; } = new Page
     {

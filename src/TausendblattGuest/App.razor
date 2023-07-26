@@ -70,7 +70,13 @@
     }
 
     void ButtonGoToMainPage()
-        => AppDataSingleton!.NavigationManager!.NavigateTo("/");
+            => AppDataSingleton!.NavigationManager!.NavigateTo("/");
 
-    public static RenderFragment QrIcon =@<img src="/images/Icons/hello.qr.svg" style="width:16px; height: 16px" />;
+    public static RenderFragment FavIcon(IconSize iconSize = IconSize.Default)
+            => iconSize switch
+            {
+                IconSize.Small =>@<img src="/favicon.svg" style="width:16px; height: 16px" />,
+                IconSize.Large =>@<img src="/favicon.svg" style="width:32px; height: 32px" />,
+                _ =>@<img src="/favicon.svg" style="width:16px; height: 16px" />
+            };
 }

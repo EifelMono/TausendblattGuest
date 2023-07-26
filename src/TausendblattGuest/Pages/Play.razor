@@ -1,0 +1,72 @@
+﻿@page "/play"
+@inject IAppDataSingleton AppData
+
+<PageHeader Page="@Page" />
+
+
+<Icon Name="Blazorise.Icons.FontAwesome.FontAwesomeIcons.Voicemail" />
+
+<BarIcon IconName="@App.FavIcon(IconSize.Small)" />
+
+<Button Color="Color.Primary" Clicked="@ShowModal">Show Modal</Button>
+
+<Modal @ref="modalRef" Animated="true" Closing="@ClosingButton">
+    <ModalContent Size="ModalSize.Default" Centered>
+        <ModalHeader>
+            <ModalTitle>Employee edit</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Name</FieldLabel>
+                <TextEdit Placeholder="Enter name..." />
+            </Field>
+            <Field>
+                <FieldLabel>Surname</FieldLabel>
+                <TextEdit Placeholder="Enter surname..." />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
+            <Button Color="Color.Primary" Clicked="@HideModal">Save Changes</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+@code {
+
+    [Parameter]
+    public string? Route { get; set; }
+
+    [Parameter]
+    public Page? Page { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Page = AppData.Pages.Play;
+        Route = Page.Route;
+    }
+
+
+    private Modal? modalRef;
+
+    private Task ShowModal()
+    {
+        return modalRef!.Show();
+    }
+
+    private Task HideModal()
+    {
+        return modalRef!.Hide();
+    }
+
+    private Task ClosingButton(ModalClosingEventArgs eventArgs)
+    {
+        if (eventArgs.CloseReason != CloseReason.UserClosing)
+        {
+            eventArgs.Cancel = true;
+        }
+        return Task.CompletedTask;
+    }
+}
